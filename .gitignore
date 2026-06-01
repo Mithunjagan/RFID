@@ -1,0 +1,26 @@
+# Google Cloud API Credentials (CRITICAL: Do not upload secrets to GitHub!)
+credentials.json
+*credentials*.json
+
+# Python compilation and environment files
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Operating system files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# IDE and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
