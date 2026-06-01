@@ -15,26 +15,26 @@ This project is built like a delicate three-layered cake. If any layer falls, th
 
 ```mermaid
 graph TD
-    subgraph Physical Domain [Physical Domain ESP32]
+    subgraph PhysicalDomain [Physical Domain ESP32]
         A[RFID Card] -.->|13.56MHz RFID| B[MFRC522 Reader]
         B -->|SPI Connection| C[ESP32 MCU]
         C -->|I2C Protocol| D[16x2 LCD Display]
         C -->|GPIO Trigger| E[Buzzer]
     end
 
-    subgraph Serial Bridge [The Serial Cable of Truth]
+    subgraph SerialBridge [The Serial Cable of Truth]
         C <===>|USB-to-UART / COM Port at 115200 Baud| F[Python Script]
     end
 
-    subgraph Cloud & Storage [Data Storage]
+    subgraph CloudStorage [Data Storage]
         F <--->|Reads Local DB| G[users.csv]
         F --->|gspread API| H[Google Sheets API]
         H --->|Appends Row| I[Google Sheet 'Attendance']
     end
     
-    style Physical Domain fill:#f5f5fc,stroke:#333,stroke-width:2px
-    style Serial Bridge fill:#fff9e6,stroke:#f39c12,stroke-width:2px
-    style Cloud & Storage fill:#eafaf1,stroke:#27ae60,stroke-width:2px
+    style PhysicalDomain fill:#f5f5fc,stroke:#333,stroke-width:2px
+    style SerialBridge fill:#fff9e6,stroke:#f39c12,stroke-width:2px
+    style CloudStorage fill:#eafaf1,stroke:#27ae60,stroke-width:2px
 ```
 
 1. **The Physical Layer (ESP32 + Sensors)**: Detects your RFID card, grabs its unique ID (UID), prints it over the serial connection, and waits like a loyal dog for the PC to reply. Once the PC replies, it updates the LCD display and triggers success beeps (or a loud buzz of shame if you aren't registered).
